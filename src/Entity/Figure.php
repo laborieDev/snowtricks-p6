@@ -6,6 +6,7 @@ use App\Repository\FigureRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -27,6 +28,12 @@ class Figure
     private $name;
 
     /**
+    * @Gedmo\Slug(fields={"name"}, style="camel", separator="_")
+    * @ORM\Column(length=128, unique=true, nullable=true)
+    */
+    private $slug;
+
+    /**
     * @ORM\Column(type="text", length=65535)
     * @Assert\Length(
     *     max=65535,
@@ -36,18 +43,28 @@ class Figure
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Group", inversedBy="figures", cascade={"persist"})
      */
-    private $groupe;
+    private $group;
 
     /**
-     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="figures")
+     * @ORM\OneToOne(targetEntity="App\Entity\Media", inversedBy="principalFigure", cascade={"persist"})
      */
-    private $user;
+    private $featuredImage;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="figure", cascade={"persist"})
+     */
+    private $images;
+
+    // /**
+    //  * @ORM\ManyToOne(targetEntity=User::class, inversedBy="figures")
+    //  */
+    // private $user;
 
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -79,26 +96,68 @@ class Figure
         return $this;
     }
 
-    public function getGroupe(): ?string
+    public function getSlug(): ?string
     {
-        return $this->groupe;
+        return $this->slug;
     }
 
-    public function setGroupe(string $groupe): self
+    public function setSlug(string $slug): self
     {
-        $this->groupe = $groupe;
+        $this->slug = $slug;
 
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getFeaturedImage(): ?Media
     {
-        return $this->user;
+        return $this->featuredImage;
     }
 
-    public function setUser(?User $user): self
+    public function setFeaturedImage(?Media $featuredImage): self
     {
-        $this->user = $user;
+        $this->featuredImage = $featuredImage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getImages(): Collection
+    {
+        return $this->images;
+    }
+
+    public function addImage(Media $image): self
+    {
+        if (!$this->images->contains($image)) {
+            $this->images[] = $image;
+            $image->setFigure($this);
+        }
+
+        return $this;
+    }
+
+    public function removeImage(Media $image): self
+    {
+        if ($this->images->removeElement($image)) {
+            // set the owning side to null (unless already changed)
+            if ($image->getFigure() === $this) {
+                $image->setFigure(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getGroup(): ?Group
+    {
+        return $this->group;
+    }
+
+    public function setGroup(?Group $group): self
+    {
+        $this->group = $group;
 
         return $this;
     }
