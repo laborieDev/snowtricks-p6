@@ -133,6 +133,7 @@ class Figure
         if (!$this->images->contains($image)) {
             $this->images[] = $image;
             $image->setFigure($this);
+
         }
 
         return $this;

@@ -51,7 +51,7 @@ class FigureController extends AbstractController
                     $image->setFigure($figure);
                     $image->setIsImage(false);
                     $entityManager->persist($image);
-                    break;
+                    continue;
                 }
                 $imageMedia = $mediaLib->setImage($image, $file, $name, $folder, $figure);
             }

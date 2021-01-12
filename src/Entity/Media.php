@@ -110,7 +110,6 @@ class Media
 
         return $this;
     }
-
    
     public function getIsImage(): ?bool
     {
