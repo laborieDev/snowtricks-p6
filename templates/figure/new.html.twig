@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une figure{% endblock %}
+
+{% block body %}
+
+
+<div class="wrapper">
+    <h1>Ajouter une figure</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.name) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.group) }}
+        {{ form_row(form.featuredImage) }}
+
+
+    <button type="button" class="add_item_link" data-collection-holder-class="images">Ajouter une image</button>
+     <ul class="images" data-prototype="{{ form_widget(form.images.vars.prototype)|e('html_attr') }}"></ul>
+        {{ form_widget(form.images.vars.prototype.name)|e }}
+    </ul>
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="../assets/js/figure_add.js"></script>
+{% endblock %}

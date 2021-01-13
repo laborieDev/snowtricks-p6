@@ -43,9 +43,9 @@ class Figure
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     * @ORM\ManyToOne(targetEntity="App\Entity\Group", inversedBy="figures", cascade={"persist"})
      */
-    private $groupe;
+    private $group;
 
     /**
      * @ORM\OneToOne(targetEntity="App\Entity\Media", inversedBy="principalFigure", cascade={"persist"})
@@ -53,7 +53,7 @@ class Figure
     private $featuredImage;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="figure")
+     * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="figure", cascade={"persist"})
      */
     private $images;
 
@@ -96,18 +96,6 @@ class Figure
         return $this;
     }
 
-    public function getGroupe(): ?string
-    {
-        return $this->groupe;
-    }
-
-    public function setGroupe(string $groupe): self
-    {
-        $this->groupe = $groupe;
-
-        return $this;
-    }
-
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -144,7 +132,8 @@ class Figure
     {
         if (!$this->images->contains($image)) {
             $this->images[] = $image;
-            $image->addFigure($this);
+            $image->setFigure($this);
+
         }
 
         return $this;
@@ -153,8 +142,23 @@ class Figure
     public function removeImage(Media $image): self
     {
         if ($this->images->removeElement($image)) {
-            $image->removeFigure($this);
+            // set the owning side to null (unless already changed)
+            if ($image->getFigure() === $this) {
+                $image->setFigure(null);
+            }
         }
+
+        return $this;
+    }
+
+    public function getGroup(): ?Group
+    {
+        return $this->group;
+    }
+
+    public function setGroup(?Group $group): self
+    {
+        $this->group = $group;
 
         return $this;
     }

@@ -2,10 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\MediaRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\MediaRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=MediaRepository::class)
@@ -20,7 +21,7 @@ class Media
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=200, nullable=true)
+     * @ORM\Column(type="string", length=200)
      */
     private $name;
 
@@ -35,14 +36,16 @@ class Media
     private $principalFigure;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Figure", inversedBy="images")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Figure", inversedBy="images", cascade={"persist"})
      */
     private $figure;
 
     /**
-     * @ORM\Column(name="is_image", type="boolean", options={"default":true})
+     * @ORM\Column(name="is_image", type="boolean", nullable=true)
      */
     private $isImage;
+
+    private $image;
 
     public function __construct()
     {
@@ -107,30 +110,27 @@ class Media
 
         return $this;
     }
-
-    /**
-     * @return Collection|Figure[]
-     */
-    public function getFigures(): Collection
+   
+    public function getIsImage(): ?bool
     {
-        return $this->figures;
+        return $this->isImage;
     }
 
-    public function addFigure(Figure $figure): self
+    public function setIsImage(bool $isImage): self
     {
-        if (!$this->figures->contains($figure)) {
-            $this->figures[] = $figure;
-            $figure->addImage($this);
-        }
+        $this->isImage = $isImage;
 
         return $this;
     }
 
-    public function removeFigure(Figure $figure): self
+    public function getImage(): ?File
     {
-        if ($this->figures->removeElement($figure)) {
-            $figure->removeImage($this);
-        }
+        return $this->image;
+    }
+
+    public function setImage(?File $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }
@@ -144,12 +144,12 @@ class Media
     {
         // unset the owning side of the relation if necessary
         if ($principalFigure === null && $this->principalFigure !== null) {
-            $this->principalFigure->setFetauredImage(null);
+            $this->principalFigure->setFeaturedImage(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($principalFigure !== null && $principalFigure->getFetauredImage() !== $this) {
-            $principalFigure->setFetauredImage($this);
+        if ($principalFigure !== null && $principalFigure->getFeaturedImage() !== $this) {
+            $principalFigure->setFeaturedImage($this);
         }
 
         $this->principalFigure = $principalFigure;
@@ -165,18 +165,6 @@ class Media
     public function setFigure(?Figure $figure): self
     {
         $this->figure = $figure;
-
-        return $this;
-    }
-
-    public function getIsImage(): ?bool
-    {
-        return $this->isImage;
-    }
-
-    public function setIsImage(bool $isImage): self
-    {
-        $this->isImage = $isImage;
 
         return $this;
     }
