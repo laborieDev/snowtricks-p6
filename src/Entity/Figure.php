@@ -57,26 +57,36 @@ class Figure
      */
     private $images;
 
-    // /**
-    //  * @ORM\ManyToOne(targetEntity=User::class, inversedBy="figures")
-    //  */
-    // private $user;
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="figures")
+     */
+    private $user;
 
     public function __construct()
     {
         $this->images = new ArrayCollection();
     }
 
+    /**
+     * @return Int id
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return String name
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param String name
+     * @retutn Figure
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -84,11 +94,18 @@ class Figure
         return $this;
     }
 
+    /**
+     * @return String description
+     */
     public function getDescription(): ?string
     {
         return $this->description;
     }
 
+    /**
+     * @param String description
+     * @return Figure
+     */
     public function setDescription(string $description): self
     {
         $this->description = $description;
@@ -96,11 +113,18 @@ class Figure
         return $this;
     }
 
+    /**
+     * @return String slug
+     */
     public function getSlug(): ?string
     {
         return $this->slug;
     }
 
+    /**
+     * @param String param
+     * @return Figure
+     */
     public function setSlug(string $slug): self
     {
         $this->slug = $slug;
@@ -108,11 +132,17 @@ class Figure
         return $this;
     }
 
+    /**
+     * @return Media
+     */
     public function getFeaturedImage(): ?Media
     {
         return $this->featuredImage;
     }
 
+    /**
+     * @param Media featuredImage
+     */
     public function setFeaturedImage(?Media $featuredImage): self
     {
         $this->featuredImage = $featuredImage;
@@ -128,6 +158,10 @@ class Figure
         return $this->images;
     }
 
+    /**
+     * @param Media image
+     * @return Figure
+     */
     public function addImage(Media $image): self
     {
         if (!$this->images->contains($image)) {
@@ -139,6 +173,10 @@ class Figure
         return $this;
     }
 
+    /**
+     * @param Media image
+     * @return Figure
+     */
     public function removeImage(Media $image): self
     {
         if ($this->images->removeElement($image)) {
@@ -151,14 +189,40 @@ class Figure
         return $this;
     }
 
+    /**
+     * @return Group group
+     */
     public function getGroup(): ?Group
     {
         return $this->group;
     }
 
+    /**
+     * @param Group group
+     * @return Figure
+     */
     public function setGroup(?Group $group): self
     {
         $this->group = $group;
+
+        return $this;
+    }
+
+    /**
+     * @return User user
+     */
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param User user
+     * @return Figure
+     */
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

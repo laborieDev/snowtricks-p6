@@ -7,6 +7,7 @@ use App\Lib\MediaLib;
 use App\Entity\Figure;
 use App\Form\Type\FigureType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,9 +15,13 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class FigureController extends AbstractController
 {
     /**
-     * @Route("/figure/add", name="add_figure")
+     * @Route("/connected/add_figure", name="add_figure")
+     * @param Request $request
+     * @param mediaLib $mediaLib
+     * @param Security $security
+     * @return Response
      */
-    public function addFigure(Request $request, MediaLib $mediaLib): Response
+    public function addFigure(Request $request, MediaLib $mediaLib, Security $security): Response
     {
         $figure = new Figure();
         $form = $this->createForm(FigureType::class, $figure);
@@ -26,6 +31,7 @@ class FigureController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
 
             $figure = $form->getData();
+            $figure->setUser($security->getUser());
 
             $folder = $this->getParameter('images_directory');
 

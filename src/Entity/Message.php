@@ -38,16 +38,26 @@ class Message
      */
     private $user;
 
+    /**
+     * @return Int id
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return String content
+     */
     public function getContent(): ?string
     {
         return $this->content;
     }
 
+    /**
+     * @param String content
+     * @return Message
+     */
     public function setContent(string $content): self
     {
         $this->content = $content;
@@ -55,11 +65,18 @@ class Message
         return $this;
     }
 
+    /**
+     * @return DateTimeInterface addAt
+     */
     public function getAddAt(): ?\DateTimeInterface
     {
         return $this->addAt;
     }
 
+    /**
+     * @param DateTimeInterface addAt
+     * @return Message
+     */
     public function setAddAt(\DateTimeInterface $addAt): self
     {
         $this->addAt = $addAt;
@@ -67,11 +84,18 @@ class Message
         return $this;
     }
 
+    /**
+     * @return User user
+     */
     public function getUser(): ?User
     {
         return $this->user;
     }
 
+    /**
+     * @param User user
+     * @return Message
+     */
     public function setUser(?User $user): self
     {
         $this->user = $user;

@@ -37,16 +37,26 @@ class Group
         $this->figures = new ArrayCollection();
     }
 
+    /**
+     * @return Int id
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return String name
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param String name
+     * @return Group
+     */
     public function setName(string $name): self
     {
         $this->name = $name;
@@ -62,6 +72,10 @@ class Group
         return $this->figures;
     }
 
+    /**
+     * @param Figure figure
+     * @return Group
+     */
     public function addFigure(Figure $figure): self
     {
         if (!$this->figures->contains($figure)) {
@@ -72,6 +86,10 @@ class Group
         return $this;
     }
 
+    /**
+     * @param Figure figure
+     * @return Group
+     */
     public function removeFigure(Figure $figure): self
     {
         if ($this->figures->removeElement($figure)) {

@@ -9,10 +9,14 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Security\Core\Validator\Constraints as SecurityAssert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(
+ *     fields={"email"},
+ *     message="Email déjà utilisé."
+ * )
  */
 class User implements UserInterface
 {
@@ -40,9 +44,6 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
-     * @SecurityAssert\UserPassword(
-     *     message = "Ce mot de passe n'est pas valide."
-     * )
      */
     private $password;
 
@@ -72,16 +73,26 @@ class User implements UserInterface
         $this->messages = new ArrayCollection();
     }
     
+    /**
+     * @return Int id
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return String email
+     */
     public function getEmail(): ?string
     {
         return $this->email;
     }
 
+    /**
+     * @param String email
+     * @return User this
+     */
     public function setEmail(string $email): self
     {
         $this->email = $email;
@@ -93,6 +104,7 @@ class User implements UserInterface
      * A visual identifier that represents this user.
      *
      * @see UserInterface
+     * @return String username
      */
     public function getUsername(): string
     {
@@ -101,6 +113,7 @@ class User implements UserInterface
 
     /**
      * @see UserInterface
+     * @return Array roles
      */
     public function getRoles(): array
     {
@@ -111,6 +124,10 @@ class User implements UserInterface
         return array_unique($roles);
     }
 
+    /**
+     * @param Array roles
+     * @return User
+     */
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
@@ -120,12 +137,17 @@ class User implements UserInterface
 
     /**
      * @see UserInterface
+     * @return String password
      */
     public function getPassword(): string
     {
         return (string) $this->password;
     }
 
+    /**
+     * @param String password
+     * @return User
+     */
     public function setPassword(string $password): self
     {
         $this->password = $password;
@@ -150,11 +172,18 @@ class User implements UserInterface
         // $this->plainPassword = null;
     }
 
+    /**
+     * @return String lastName
+     */
     public function getLastName(): ?string
     {
         return $this->lastName;
     }
 
+    /**
+     * @param String lastName
+     * @return User 
+     */
     public function setLastName(string $lastName): self
     {
         $this->lastName = $lastName;
@@ -162,11 +191,18 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @return String firstName
+     */
     public function getFirstName(): ?string
     {
         return $this->firstName;
     }
 
+    /**
+     * @param String firstName
+     * @return User
+     */
     public function setFirstName(string $firstName): self
     {
         $this->firstName = $firstName;
@@ -182,6 +218,10 @@ class User implements UserInterface
         return $this->figures;
     }
 
+    /**
+     * @param Figure figure
+     * @return User
+     */
     public function addFigure(Figure $figure): self
     {
         if (!$this->figures->contains($figure)) {
@@ -192,6 +232,10 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+     * @param Figure figure
+     * @return User
+     */
     public function removeFigure(Figure $figure): self
     {
         if ($this->figures->removeElement($figure)) {
@@ -212,6 +256,10 @@ class User implements UserInterface
         return $this->messages;
     }
 
+    /**
+     * @param Message message
+     * @return User
+     */
     public function addMessage(Message $message): self
     {
         if (!$this->messages->contains($message)) {
@@ -222,6 +270,10 @@ class User implements UserInterface
         return $this;
     }
 
+    /**
+    * @param Message message
+    * @return User
+    */
     public function removeMessage(Message $message): self
     {
         if ($this->messages->removeElement($message)) {

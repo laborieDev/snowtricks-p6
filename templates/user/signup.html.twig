@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}M'inscrire{% endblock %}
+
+{% block body %}
+
+
+<div class="wrapper">
+    <h1>M'inscrire</h1>
+    {{ form_start(form) }}
+        {{ form_row(form.lastName) }}
+        {{ form_row(form.firstName) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.password.first) }}
+        {{ form_row(form.password.second) }}
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{% endblock %}
