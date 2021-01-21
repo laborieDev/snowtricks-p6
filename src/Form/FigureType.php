@@ -14,6 +14,10 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 
 class FigureType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param Array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder

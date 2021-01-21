@@ -52,16 +52,26 @@ class Media
         
     }
 
+    /**
+     * @return Int id
+     */
     public function getId(): ?int
     {
         return $this->id;
     }
 
+    /**
+     * @return String string
+     */
     public function getName(): ?string
     {
         return $this->name;
     }
 
+    /**
+     * @param String name
+     * @return Media
+     */
     public function setName(?string $name): self
     {
         $this->name = $name;
@@ -69,11 +79,18 @@ class Media
         return $this;
     }
 
+    /**
+     * @return String url
+     */
     public function getUrl(): ?string
     {
         return $this->url;
     }
 
+    /**
+     * @param String url
+     * @return Media
+     */
     public function setUrl(string $url): self
     {
         $this->url = $url;
@@ -89,6 +106,10 @@ class Media
         return $this->principalFigures;
     }
 
+    /**
+     * @param Figure principalFigure
+     * @return Media
+     */
     public function addPrincipalFigure(Figure $principalFigure): self
     {
         if (!$this->principalFigures->contains($principalFigure)) {
@@ -99,6 +120,10 @@ class Media
         return $this;
     }
 
+    /**
+     * @param Figure principalFigure
+     * @return Media
+     */
     public function removePrincipalFigure(Figure $principalFigure): self
     {
         if ($this->principalFigures->removeElement($principalFigure)) {
@@ -111,11 +136,18 @@ class Media
         return $this;
     }
    
+    /**
+     * @return Bool isImage
+     */
     public function getIsImage(): ?bool
     {
         return $this->isImage;
     }
 
+    /**
+     * @param Bool isImage
+     * @return Media
+     */
     public function setIsImage(bool $isImage): self
     {
         $this->isImage = $isImage;
@@ -123,11 +155,18 @@ class Media
         return $this;
     }
 
+    /**
+     * @return File image
+     */
     public function getImage(): ?File
     {
         return $this->image;
     }
 
+    /**
+     * @param File image
+     * @return Media
+     */
     public function setImage(?File $image): self
     {
         $this->image = $image;
@@ -135,11 +174,18 @@ class Media
         return $this;
     }
 
+    /**
+     * @return Figure principalFigure
+     */
     public function getPrincipalFigure(): ?Figure
     {
         return $this->principalFigure;
     }
 
+    /**
+     * @param Figure principalFigure
+     * @return Media
+     */
     public function setPrincipalFigure(?Figure $principalFigure): self
     {
         // unset the owning side of the relation if necessary
@@ -157,11 +203,18 @@ class Media
         return $this;
     }
 
+    /**
+     * @return Figure figure
+     */
     public function getFigure(): ?Figure
     {
         return $this->figure;
     }
 
+    /**
+     * @param Figure figure
+     * @return Media
+     */
     public function setFigure(?Figure $figure): self
     {
         $this->figure = $figure;

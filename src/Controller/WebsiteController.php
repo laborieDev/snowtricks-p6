@@ -10,6 +10,7 @@ class WebsiteController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")
+     * @return Response
      */
     public function index(): Response
     {
