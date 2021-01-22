@@ -1,4 +1,5 @@
 jQuery(document).ready(function() {
+    $('label').last().hide();
     setRequiredInputMedia();
     // Get the ul that holds the collection of tags
     var $tagsCollectionHolder = $('ul.images');
@@ -45,7 +46,7 @@ function addFormToCollection($collectionHolderClass) {
 }
 
 function addTagFormDeleteLink($tagFormLi) {
-    var $removeFormButton = $('<button type="button">Supprimer cette image</button>');
+    var $removeFormButton = $('<button type="button" class="btn-primary btn-delete"><i class="fas fa-trash"></i></button>');
     $tagFormLi.append($removeFormButton);
 
     $removeFormButton.on('click', function(e) {

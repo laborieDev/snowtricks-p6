@@ -22,12 +22,20 @@ class MediaType extends AbstractType
     {
         $builder
             ->add('name', TextType::class,[
-                    "label" => "Nom de l'image "
+                    "label" => " ",
+                    "attr" => [
+                        "placeholder" => "Nom de l'image",
+                        "class" => "form-control"
+                    ]
                 ]
             )
             ->add('url', UrlType::class, [
-                'label' => "Lien externe ",
-                'required' => false
+                'label' => " ",
+                'required' => false,
+                "attr" => [
+                    "placeholder" => "Lien du média externe",
+                    "class" => "form-control"
+                ]
             ])
             ->add('image', FileType::class, [
                 'label' => " ",

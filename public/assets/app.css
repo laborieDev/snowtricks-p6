@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700&display=swap');
+
+@import "css/global.css";
+@import "css/forms.css";
+
+@import "css/slider.css";
+
+@import "css/pages/pages.css";

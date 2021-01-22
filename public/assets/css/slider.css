@@ -1,0 +1,47 @@
+#carouselHomePage .carousel-item {
+    height: calc(100vh - 100px);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+#carouselHomePage .carousel-item.item-1 {
+    background-image: url('/img/slider/home-slide-one.jpg');
+}
+
+#carouselHomePage .carousel-item.item-2 {
+    background-image: url('/img/slider/home-slide-two.jpg');
+}
+
+#carouselHomePage .carousel-item.item-3 {
+    background-image: url('/img/slider/home-slide-three.jpg');
+}
+
+#carouselHomePage .carousel-item .content {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#carouselHomePage .carousel-item.item-1 .content {
+    background-color: rgba(175, 143, 97, 0.8);
+}
+
+#carouselHomePage .carousel-item.item-2 .content {
+    background-color: rgba(51, 49, 51, 0.8);
+}
+
+#carouselHomePage .carousel-item.item-3 .content {
+    background-color: rgba(28, 57, 86, 0.8);
+}
+
+#carouselHomePage .carousel-item .content div {
+    text-align: center;
+}
+
+#carouselHomePage .carousel-item .content h1 {
+    font-family: var(--agl-logo-font);
+}
