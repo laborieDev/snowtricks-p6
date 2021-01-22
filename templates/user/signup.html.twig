@@ -4,17 +4,32 @@
 
 {% block body %}
 
-
-<div class="wrapper">
-    <h1>M'inscrire</h1>
-    {{ form_start(form) }}
-        {{ form_row(form.lastName) }}
-        {{ form_row(form.firstName) }}
-        {{ form_row(form.email) }}
-        {{ form_row(form.password.first) }}
-        {{ form_row(form.password.second) }}
-    {{ form_end(form) }}
-
+<div class="signup-page">
+        <h1>M'inscrire</h1>
+        {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_widget(form.lastName, {"attr" : {"class" : "form-control"}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.firstName, {"attr" : {"class" : "form-control"}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.email, {"attr" : {"class" : "form-control"}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.password.first, {"attr" : {"class" : "form-control"}}) }}
+        </div>
+        <div class="form-group">
+            {{ form_widget(form.password.second, {"attr" : {"class" : "form-control"}}) }}
+        </div>
+        {% if not form.vars.valid %}
+            <div class="alert alert-danger">
+                {{ form_errors(form.email) }}
+                {{ form_errors(form.password) }}
+            </div>
+        {% endif %}
+        <button type="submit" class="btn btn-primary">S'inscrire</button>
+        {{ form_end(form) }}
 </div>
 {% endblock %}
 

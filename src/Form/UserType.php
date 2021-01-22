@@ -27,17 +27,27 @@ class UserType extends AbstractType
     {
         $builder
             ->add('lastName', TextType::class,[
-                    "label" => "Nom : "
+                    "label" => "Nom : ",
+                    "attr" => [
+                        "placeholder" => "Nom",
+
+                    ]
                 ]
             )
 
             ->add('firstName', TextType::class,[
-                    "label" => "Prénom : "
+                    "label" => "Prénom : ",
+                    "attr" => [
+                        "placeholder" => "Prénom"
+                    ]
                 ]
             )
 
             ->add('email', EmailType::class,[
-                    "label" => "Email : "
+                    "label" => "Email : ",
+                    "attr" => [
+                        "placeholder" => "Email"
+                    ]
                 ]
             )
 
@@ -46,11 +56,19 @@ class UserType extends AbstractType
                 'invalid_message' => 'Les mots de passes de correspondent pas',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Mot de passe'],
-                'second_options' => ['label' => 'Confirmation du mot de passe'],
+                'first_options'  => [
+                    'label' => 'Mot de passe',
+                    "attr" => [
+                        "placeholder" => "Mot de passe"
+                    ]
+                ],
+                'second_options' => [
+                    'label' => 'Confirmation du mot de passe',
+                    "attr" => [
+                        "placeholder" => "Confirmation du mot de passe"
+                    ]
+                ],
             ])
-
-            ->add('M\'inscrire', SubmitType::class)
         ;
     }
 
