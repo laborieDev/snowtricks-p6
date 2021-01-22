@@ -22,17 +22,23 @@ class FigureType extends AbstractType
     {
         $builder
             ->add('name', TextType::class,[
-                    "label" => "Nom"
+                    "label" => "Nom",
+                    "attr" => [
+                        "placeholder" => "Nom"
+                    ]
                 ]
             )
 
             ->add('group', EntityType::class, [
                 'class' => Group::class,
-                'choice_label' => 'name',
+                'choice_label' => 'name'
             ])
             
             ->add('description', TextareaType::class,[
-                "label" => "Description"
+                "label" => "Description",
+                "attr" => [
+                    "placeholder" => "Description"
+                ]
             ])
 
             ->add('featuredImage', MediaType::class,[
@@ -44,8 +50,6 @@ class FigureType extends AbstractType
                 'entry_options' => ['label' => false],
                 'allow_add' => true
             ])
-
-            ->add('Valider', SubmitType::class)
         ;
     }
 }
