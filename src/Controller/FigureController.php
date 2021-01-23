@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class FigureController extends AbstractController
-{
+{   
     /**
      * @Route("/connected/add_figure", name="add_figure")
      * @param Request $request
@@ -71,5 +71,14 @@ class FigureController extends AbstractController
         return $this->render('figure/new.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/figure/{slug}", name="figure_view")
+     * @param String $slug
+     * @return Response
+     */
+    public function getFigureView($slug){
+
     }
 }

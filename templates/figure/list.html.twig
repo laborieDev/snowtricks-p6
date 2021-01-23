@@ -1,0 +1,16 @@
+<div class="all-figures row">
+    {% for figure in figures %}
+        <div class="item col-md-4">
+            <a href="{{ path('figure_view', {'slug' : figure.slug}) }}" style="background-image:url('{{ figure.featuredImage.url }}')">
+                <div class="title">
+                    <h3>{{ figure.name }}</h3>
+                </div>
+            </a>
+        </div>
+    {% endfor %}
+</div>
+<div class="row">
+    <div class="col-md-12 pagination-col">
+        {{ knp_pagination_render(figures) }}
+    </div>
+</div>

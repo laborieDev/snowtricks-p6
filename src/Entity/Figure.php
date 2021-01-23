@@ -85,7 +85,7 @@ class Figure
 
     /**
      * @param String name
-     * @retutn Figure
+     * @return Figure
      */
     public function setName(string $name): self
     {
