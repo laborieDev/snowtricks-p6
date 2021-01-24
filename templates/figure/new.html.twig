@@ -7,7 +7,6 @@
 
 <div class="add_figure_page">
     <h1>Ajouter une figure</h1>
-    <form>
     {{ form_start(form) }}
         <div class="form-group">
             {{ form_widget(form.name, {"attr" : {"class" : "form-control"}}) }}
@@ -32,10 +31,9 @@
     
         <button type="submit" class="btn btn-primary">Valider</button>
     {{ form_end(form) }}
-    </form>
 </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script src="../assets/js/figure_add.js"></script>
+    <script src="{{asset('assets/js/figure_add.js')}}"></script>
 {% endblock %}

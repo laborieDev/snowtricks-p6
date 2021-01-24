@@ -22,6 +22,12 @@ p{
     font-family: var(--agl-primary-font);
 }
 
+a{
+    font-family: var(--agl-primary-font);
+    color: var(--agl-primary-color);
+    transition : all 0.5s;
+}
+
 .header{
     background-color: var(--agl-primary-color);
     padding: 30px 0;
