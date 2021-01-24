@@ -23,6 +23,7 @@ class MediaType extends AbstractType
         $builder
             ->add('name', TextType::class,[
                     "label" => " ",
+                    'required' => false,
                     "attr" => [
                         "placeholder" => "Nom de l'image",
                         "class" => "form-control"

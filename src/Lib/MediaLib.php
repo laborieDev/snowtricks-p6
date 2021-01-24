@@ -32,7 +32,6 @@ class MediaLib
         if($name == null){
             $newFilename = $this->setNameForUrl($originalFilename);
         } else {
-
             $newFilename = $this->setNameForUrl($name);
         }
 
@@ -69,7 +68,7 @@ class MediaLib
         if($upload['is_upload']){
             $fileName = $upload['data'];
             $image->setName($name);
-            $image->setUrl($folder."/".$fileName);
+            $image->setImgSrc($folder."/".$fileName);
             $image->setIsImage(true);
             $image->setFigure($figure);
 
@@ -108,5 +107,22 @@ class MediaLib
         $name = str_replace(" ","_",$name);
 
         return $name;
+    }
+
+    /**
+     * Remove Media 
+     * @param Media $media
+     */
+    public function removeMedia(Media $media)
+    {
+        if ($media->getImgSrc() != null) {
+            $filePath = $media->getImgSrc();
+            if (file_exists($filePath)) {
+                unlink($filePath);
+            }
+        }
+
+        $this->em->remove($media);
+        $this->em->flush();
     }
 }

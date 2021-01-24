@@ -63,6 +63,11 @@ class User implements UserInterface
     private $figures;
 
     /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", inversedBy="users", cascade={"persist"})
+     */
+    private $image;
+
+    /**
      * @ORM\OneToMany(targetEntity=Message::class, mappedBy="user")
      */
     private $messages;
@@ -282,6 +287,18 @@ class User implements UserInterface
                 $message->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImage(): ?Media
+    {
+        return $this->image;
+    }
+
+    public function setImage(?Media $image): self
+    {
+        $this->image = $image;
 
         return $this;
     }

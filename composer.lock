@@ -7772,16 +7772,16 @@
         },
         {
             "name": "symfony/web-server-bundle",
-            "version": "v4.4.18",
+            "version": "v4.4.19",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/web-server-bundle.git",
-                "reference": "d1eb905afca7d4957420c4b6809e2275d3e5e85d"
+                "reference": "8e159ee4eab964b67ae87b32a1cab2de153241d7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/web-server-bundle/zipball/d1eb905afca7d4957420c4b6809e2275d3e5e85d",
-                "reference": "d1eb905afca7d4957420c4b6809e2275d3e5e85d",
+                "url": "https://api.github.com/repos/symfony/web-server-bundle/zipball/8e159ee4eab964b67ae87b32a1cab2de153241d7",
+                "reference": "8e159ee4eab964b67ae87b32a1cab2de153241d7",
                 "shasum": ""
             },
             "require": {
@@ -7820,7 +7820,7 @@
                     "homepage": "https://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony WebServerBundle",
+            "description": "Provides commands for running applications using the PHP built-in web server",
             "homepage": "https://symfony.com",
             "funding": [
                 {
@@ -7836,7 +7836,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-08T16:59:59+00:00"
+            "time": "2021-01-24T23:44:26+00:00"
         }
     ],
     "aliases": [],

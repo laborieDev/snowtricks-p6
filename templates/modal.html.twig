@@ -1,0 +1,8 @@
+<div class="agl_modal" {% if idName is defined %} id="{{ idName }}" {% else %} id="message_modal" {% endif %}>
+    <div class="modal_close"></div>
+    <div class="modal_content">
+        <div>
+            {% if message is defined %}<h3>{{ message }} <i class="fas fa-check"></i></h3>{% endif %}
+        </div>
+    </div>
+</div>

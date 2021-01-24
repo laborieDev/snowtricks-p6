@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Lib\MediaLib;
 use App\Form\Type\UserType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -20,7 +21,7 @@ class UserController extends AbstractController
      * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
-    public function signUp(Request $request, UserPasswordEncoderInterface $encoder): Response
+    public function signUp(Request $request, MediaLib $mediaLib, UserPasswordEncoderInterface $encoder): Response
     {
         $user = new User();
         $form = $this->createForm(UserType::class, $user);
@@ -34,9 +35,26 @@ class UserController extends AbstractController
 
             $user->setRoles(['ROLE_USER']);
 
+            $folder = $this->getParameter('images_directory');
+
+            // Get featured image
+            $imageObject = $form->get('image');
+            $image = $imageObject->get('image')->getData();
+
+            if ($image) {
+                $name = $user->getLastName()."_".$user->getFirstName()."_profil";
+
+                $imageMedia = $mediaLib->addImage($image, $name, $folder);
+                if($imageMedia != null){
+                    $user->setImage($imageMedia);
+                }
+            }
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
+            return $this->redirectToRoute('homepage');
         }
 
         return $this->render('user/signup.html.twig', [

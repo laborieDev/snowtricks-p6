@@ -11,7 +11,15 @@ jQuery(document).ready(function() {
         var $collectionHolderClass = $(e.currentTarget).data('collectionHolderClass');
         // add a new tag form (see next code block)
         addFormToCollection($collectionHolderClass);
-    })
+    });
+
+    if($(".old-images-delete").length > 0){
+        $(".old-images-delete").on("click", function(){
+            removeActualImage(this);
+        });
+    }
+
+    $("#message_modal").fadeOut();
 });
 
 function addFormToCollection($collectionHolderClass) {
@@ -23,6 +31,10 @@ function addFormToCollection($collectionHolderClass) {
 
     // get the new index
     var index = $collectionHolder.data('index');
+
+    if($("#nb_actuals_images").length > 0 && parseInt($("#nb_actuals_images").val()) > index){
+        index = parseInt($("#nb_actuals_images").val()) + 1;
+    }
 
     var newForm = prototype;
     // You need this only if you didn't set 'label' => false in your tags field in TaskType
@@ -58,5 +70,34 @@ function addTagFormDeleteLink($tagFormLi) {
 function setRequiredInputMedia(){
     $('label[for="figure_featuredImage_url"]').hide();
     $('#figure_featuredImage_url').hide();
-    $('#figure_featuredImage_image').attr("required", "true");
+
+    if($("#action-label").val() != "edit"){
+        $('#figure_featuredImage_image').attr("required", "true");
+    }
+    else {
+        // $("gest-figure-submit-form").on("click", function(e){
+        //     e.preventDefault();
+        // });
+    }
+}
+
+function removeActualImage(button){
+    $("#message_modal .modal_content").html("<div class='ajax-preloader'><div></div><div></div><div></div></div>");
+    $("#message_modal").fadeIn();
+
+    var mediaID = button.getAttribute('data-id');
+
+    $.ajax({
+        url: "/ajax/remove_media", 
+        data: {
+            id: mediaID
+        },
+        success: function(result){
+            $(".old-images-"+mediaID).remove();
+            $("#message_modal .modal_content").html("Suppression bien effectuée !");
+        },
+        error: function(){
+            console.log('Error for Remove Image');
+        }
+    });
 }

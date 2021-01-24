@@ -21,14 +21,19 @@ class Media
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=200)
+     * @ORM\Column(type="string", length=200, nullable=true)
      */
     private $name;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $url;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $imgSrc;
 
      /**
      * @ORM\OneToOne(targetEntity="App\Entity\Figure", mappedBy="featuredImage")
@@ -41,6 +46,11 @@ class Media
     private $figure;
 
     /**
+     * @ORM\OneToMany(targetEntity=User::class, mappedBy="image")
+     */
+    private $users;
+
+    /**
      * @ORM\Column(name="is_image", type="boolean", nullable=true)
      */
     private $isImage;
@@ -49,7 +59,7 @@ class Media
 
     public function __construct()
     {
-        
+        $this->users = new ArrayCollection();
     }
 
     /**
@@ -91,7 +101,7 @@ class Media
      * @param String url
      * @return Media
      */
-    public function setUrl(string $url): self
+    public function setUrl(string $url = null): self
     {
         $this->url = $url;
 
@@ -218,6 +228,63 @@ class Media
     public function setFigure(?Figure $figure): self
     {
         $this->figure = $figure;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    /**
+     * @param User $user
+     * @return Media 
+     */
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setImage($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param User $user
+     * @return Media 
+     */
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            // set the owning side to null (unless already changed)
+            if ($user->getImage() === $this) {
+                $user->setImage(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return String ImgSrc
+     */
+    public function getImgSrc(): ?string
+    {
+        return $this->imgSrc;
+    }
+
+    /**
+     * @param String $imgSrc
+     * @return Media
+     */
+    public function setImgSrc(?string $imgSrc = null): self
+    {
+        $this->imgSrc = $imgSrc;
 
         return $this;
     }

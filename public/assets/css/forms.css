@@ -56,10 +56,27 @@ label, select{
     list-style-type: none;
 }
 
+.media-form-section {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
 .media-form-section li{
     border: solid 1px var(--agl-secondary-color);
     padding: 15px;
     border-radius: 5px;
     margin: 10px 0;
     list-style-type: none;
+}
+
+.media-form-only-files-visible #user_image_name, .media-form-only-files-visible #user_image_url {
+    display: none;
+}
+
+.media-form-only-files-visible div {
+    height: 0;
+}
+
+.media-form-only-files-visible div:last-child {
+    height: auto;
 }

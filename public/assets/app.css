@@ -6,5 +6,9 @@
 
 @import "css/slider.css";
 @import "css/figures_list.css";
+@import "css/modal.css";
+@import "css/medias_carousel.css";
+@import "css/ajax-preloader.css";
 
 @import "css/pages/pages.css";
+@import "css/pages/figure_view.css";

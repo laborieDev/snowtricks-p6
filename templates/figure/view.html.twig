@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ figure.name }}{% endblock %}
+
+{% block body %}
+<div class="view_figure_page page">
+    <div class="title" style="background-image: url('/{{ figure.featuredImage.imgSrc }}')">
+        <h1>{{ figure.name }}</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 actions">
+                {% if app.user != null %}<a href="{{ path('edit_figure', {'id': figure.id}) }}"><i class="fas fa-edit"></i> Modifier</a>{% endif %}
+                {% if app.user == figure.user %}<a href="#" class="remove-figure" data-id="{{ figure.id }}" data-success="{{ path('homepage') }}"><i class="fas fa-trash"></i> Effacer</a>{% endif %}
+            </div>
+            <div class="col-md-12 figure_medias">
+            {% if figure.images|length > 0 %}
+                {% include 'media/medias_carousel.html.twig' with {'mediasList': figure.images } %}
+            {% endif %}
+            </div>
+            <div class="col-md-12 figure_description">
+                <p>{{ figure.description}}</p>
+            </div>
+            <div class="col-md-12 more_infos">
+                <div class="row">
+                    <div class="col-md-3 item">
+                        <p>Auteur <br> {{ figure.user.lastName }} {{ figure.user.firstName }}</p>
+                    </div>
+                    <div class="col-md-3 item">
+                        <p>Groupe <bR> {{ figure.group.name }}</p>
+                    </div>
+                    <div class="col-md-3 item">
+                        <p>Ecrit le <br> {{ figure.createdAt|date("d/m/Y") }}</p>
+                    </div>
+                    <div class="col-md-3 item">
+                        <p>Dernière modification le <br> {{ figure.updatedAt|date("d/m/Y") }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 add_message">
+                <h2>Commentaires</h2>
+                {% if app.user != null %}
+                <div class="form">
+                    {{ form_start(messageForm) }}
+                    <div class="col-md-11">
+                        {{ form_widget(messageForm.content)}}
+                    </div>
+                    <div class="col-md-1">
+                        <button type="submit" class="btn btn-primary"><i class="fas fa-paper-plane"></i></button>
+                    </div>
+                    {{ form_end(messageForm) }}
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-md-12 all_messages">
+                {% for message in messages %}
+                    <div class="item">
+                        <div class="image" {% if message.user.image != null and message.user.image.imgSrc != null %}style="background-image:url('/{{ message.user.image.imgSrc }}')"{% endif %}>
+                        </div>
+                        <div class="infos">
+                            <p class="author_name">{{ message.user.lastName }} {{ message.user.firstName }} - {{ message. addAt|date("d/m/Y") }}</p>
+                            <p class="content">{{ message.content }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-md-12 pagination-col">
+                {{ knp_pagination_render(messages) }}
+            </div>
+        </div>
+    </div>
+</div>
+{% if alertModal is defined %}
+    {% include 'modal.html.twig' with {'message' : alertModal} %}
+{% endif %}
+
+{% if app.user == figure.user %}
+    {% include 'modal.html.twig' with {'idName' : 'remove-figure-modal'} %}
+{% endif %}
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset('assets/js/figure_view.js')}}"></script>
+    <script src="{{asset('assets/js/remove_figures.js')}}"></script>
+{% endblock %}

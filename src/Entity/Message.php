@@ -39,6 +39,11 @@ class Message
     private $user;
 
     /**
+     * @ORM\ManyToOne(targetEntity=Figure::class, inversedBy="messages")
+     */
+    private $figure;
+
+    /**
      * @return Int id
      */
     public function getId(): ?int
@@ -99,6 +104,25 @@ class Message
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return Figure
+     */
+    public function getFigure(): ?Figure
+    {
+        return $this->figure;
+    }
+
+    /**
+     * @param Figure $figure
+     * @return Message
+     */
+    public function setFigure(?Figure $figure): self
+    {
+        $this->figure = $figure;
 
         return $this;
     }

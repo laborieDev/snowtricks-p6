@@ -1,0 +1,106 @@
+.view_figure_page .title {
+    width: 100%;
+    height: calc(60vh - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin-bottom: 20px;
+}
+
+.view_figure_page .title h1 {
+    color: white;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(175, 143, 97, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+}
+
+.view_figure_page .figure_description {
+    margin: 20px auto;
+}
+
+.view_figure_page .more_infos {
+    background-color: rgba(28, 57, 86, 0.8);
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.view_figure_page .more_infos .item {
+    text-align: center;
+    color: white;
+}
+
+.view_figure_page .more_infos .item p {
+    margin: 0;
+}
+
+.view_figure_page .add_message {
+    margin: 30px auto;
+}
+
+.view_figure_page .add_message h2 {
+    text-align: center;
+}
+
+.view_figure_page .add_message form {
+    display: flex;
+}
+
+.view_figure_page .add_message form div {
+    flex: 1;
+}
+
+.view_figure_page .add_message form div:first-child {
+    padding-left: 0;
+}
+
+.view_figure_page .add_message form button {
+    height: 100%;
+}
+
+.view_figure_page .all_messages {
+    margin: 10px auto;
+}
+
+.view_figure_page .all_messages .item {
+    margin: 20px auto;
+    display: flex;
+    position: relative;
+}
+
+.view_figure_page .all_messages .item .image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+.view_figure_page .all_messages .item .infos {
+    width: calc(100% - 60px);
+    margin-left: 10px;
+}
+
+.view_figure_page .all_messages .item p {
+    margin: 0 0 5px;
+}
+
+.view_figure_page .all_messages .item .author_name {
+    font-weight: 700;
+}
+
+.view_figure_page .pagination-col {
+    margin: 10px auto 40px;
+}
+
+.view_figure_page .actions a {
+    margin: 0 30px;
+}
