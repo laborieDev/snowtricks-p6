@@ -1,0 +1,19 @@
+<div class="figure_medias_list">
+    {% if mediasList|length > 4 %}
+        <a href="#" class="show_more_medias"><i class="fas fa-chevron-down"></i></a>
+    {% endif %}
+{% for media in mediasList %}
+    <div class="item">
+        <div class="content">
+            {% if media.isImage == true %}
+                <img src="/{{ media.imgSrc }}" class="img-fluid mx-auto d-block" alt="{{media.name}}">
+            {% else %}
+                <embed type="video/webm" src="{{ media.url }}" class="img-fluid mx-auto d-block">
+            {% endif %}
+        </div>
+        <div class="click"></div>
+     </div>
+    {% endfor %}
+</div>
+
+{% include 'modal.html.twig' %}

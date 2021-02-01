@@ -43,6 +43,11 @@ class UserType extends AbstractType
                 ]
             )
 
+
+            ->add('image', MediaType::class,[
+                "label" => "Photo de profil"
+            ])
+
             ->add('email', EmailType::class,[
                     "label" => "Email : ",
                     "attr" => [

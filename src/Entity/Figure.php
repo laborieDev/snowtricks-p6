@@ -58,13 +58,29 @@ class Figure
     private $images;
 
     /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Message", mappedBy="figure", cascade={"persist"})
+     */
+    private $messages;
+
+    /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="figures")
      */
     private $user;
 
+    /** 
+     * @ORM\Column(type="datetime") 
+     */
+    private $createdAt;
+
+    /** 
+     * @ORM\Column(type="datetime", nullable=true) 
+     */
+    private $updatedAt;
+
     public function __construct()
     {
         $this->images = new ArrayCollection();
+        $this->messages = new ArrayCollection();
     }
 
     /**
@@ -223,6 +239,82 @@ class Figure
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * @return DatTimeInterface
+     */
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param DateTimeInterface
+     * @return Figure
+     */
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+    
+    /**
+     * @return DatTimeInterface
+     */
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param DateTimeInterface
+     * @return Figure
+     */
+    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Message[]
+     */
+    public function getMessages(): Collection
+    {
+        return $this->messages;
+    }
+
+    /**
+     * @param Message $message
+     * @return Figure
+     */
+    public function addMessage(Message $message): self
+    {
+        if (!$this->messages->contains($message)) {
+            $this->messages[] = $message;
+            $message->setFigure($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param Message $message
+     * @return Figure
+     */
+    public function removeMessage(Message $message): self
+    {
+        if ($this->messages->removeElement($message)) {
+            // set the owning side to null (unless already changed)
+            if ($message->getFigure() === $this) {
+                $message->setFigure(null);
+            }
+        }
 
         return $this;
     }

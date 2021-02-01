@@ -1,11 +1,20 @@
 <div class="all-figures row">
     {% for figure in figures %}
+    {% if figure.featuredImage.isImage == true %}
+        {% set imgUrl = figure.featuredImage.imgSrc %}
+    {% else %}
+        {% set imgUrl = figure.featuredImage.url %}
+    {% endif %}
         <div class="item col-md-4">
-            <a href="{{ path('figure_view', {'slug' : figure.slug}) }}" style="background-image:url('{{ figure.featuredImage.url }}')">
+            <a href="{{ path('figure_view', {'slug' : figure.slug}) }}" style="background-image:url('{{ imgUrl }}')">
                 <div class="title">
                     <h3>{{ figure.name }}</h3>
                 </div>
             </a>
+            <div class="actions">
+                {% if app.user != null %}<a href="{{ path('edit_figure', {'id': figure.id}) }}"><i class="fas fa-edit"></i></a>{% endif %}
+                {% if app.user == figure.user %}<a href="#" class="remove-figure" data-id="{{ figure.id }}" data-success="reload"><i class="fas fa-trash"></i></a>{% endif %}
+            </div>
         </div>
     {% endfor %}
 </div>

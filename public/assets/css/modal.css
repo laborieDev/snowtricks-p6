@@ -1,0 +1,61 @@
+.agl_modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0, 0.8);
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.agl_modal .modal_close {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.agl_modal .modal_content {
+    padding: 60px 30px;
+    min-width: 500px;
+    min-height: 200px;
+    max-width: 90%;
+    max-height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    z-index: 50;
+}
+
+.agl_modal .modal_content embed {
+    width: 600px;
+    height: 300px;
+}
+
+#remove-figure-modal .all-btns {
+    margin: 30px auto;
+    text-align: center;
+}
+
+#remove-figure-modal .all-btns a {
+    padding: 10px 30px;
+    margin: 0 10px;
+    background-color: var(--agl-primary-color);
+    color: white;
+    text-decoration: none;
+    transition: all 0.5s;
+}
+
+#remove-figure-modal .all-btns a:hover {
+    background-color: var(--agl-secondary-color);
+}
+
+#remove-figure-modal .all-btns .confirm-remove:hover {
+    background-color: #EC7063;
+}
