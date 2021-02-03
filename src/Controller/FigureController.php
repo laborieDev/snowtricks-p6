@@ -258,4 +258,19 @@ class FigureController extends AbstractController
             'error' => $errors
         ]);
     }
+
+    /**
+     * @Route("/search", name="search_figure")
+     * @return Response
+     */
+    public function searchFigure(): Response
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $figures = $entityManager->getRepository(Figure::class)->findAll();
+
+        return $this->render('figure/search.html.twig', [
+            'allFigures' => $figures
+        ]);
+    }
 }

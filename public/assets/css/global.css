@@ -1,4 +1,4 @@
-body{
+body {
     width: 100vw;
     height: 100vh;
     overflow-x: hidden;
@@ -13,22 +13,22 @@ body{
     --agl-logo-font : 'Rock Salt', cursive;
 }
 
-h1, h2{
+h1, h2 {
     font-family: var(--agl-primary-font);
     font-weight: 700;
 }
 
-p{
+p {
     font-family: var(--agl-primary-font);
 }
 
-a{
+a {
     font-family: var(--agl-primary-font);
     color: var(--agl-primary-color);
     transition : all 0.5s;
 }
 
-.header{
+.header {
     background-color: var(--agl-primary-color);
     padding: 30px 0;
     position: fixed;
@@ -38,17 +38,17 @@ a{
     z-index: 100;
 }
 
-.header .row{
+.header .row {
     display: flex;
 }
 
-.header .row div{
+.header .row div {
     flex: 1;
     display: flex;
     align-items: center;
 }
 
-.header .logo a{
+.header .logo a {
     font-family: var(--agl-logo-font);
     font-size: 30px;
     margin: 0;
@@ -56,11 +56,11 @@ a{
     color: var(--agl-secondary-color);
 }
 
-.header .menu{
+.header .menu {
     justify-content: flex-end;
 }
 
-.header .menu a{
+.header .menu a {
     font-family: var(--agl-primary-font);
     font-weight: 700;
     font-size: 20px;
@@ -71,7 +71,7 @@ a{
     transition: all 0.5s;
 }
 
-.header .menu a:after{
+.header .menu a:after {
     content: "";
     width: 2px;
     background-color: white;
@@ -81,45 +81,94 @@ a{
     right: 0;
 }
 
-.header .menu a:last-child:after{
+.header .menu a:last-child:after {
     display: none;
 }
 
-.header .menu a:hover{
+.header .menu a:hover {
     color: var(--agl-secondary-color);
 }
 
-.separ-header-main{
+.header .menu-mobile, .header .menu-mobile-content {
+    display: none!important;
+}
+
+.header .menu-mobile {
+    align-items: center;
+    justify-content: flex-end;
+    color: white;
+}
+
+.header .menu-mobile-content {
+    position: fixed;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background: var(--agl-primary-color);
+    display: flex!important;
+    justify-content: center;
+    align-items: center;
+    left: 100%;
+    transition: all 0.5s;
+}
+
+.header .menu-mobile-content .close-mobile-menu {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-decoration: none;
+    font-weight: 100;
+}
+
+.header .menu-mobile-content .content {
+    display: block;
+    text-align: center;
+}
+
+.header .menu-mobile-content .content .logo a {
+    margin: 10px auto;
+}
+
+.header .menu-mobile-content a {
+    display: block;
+    color: white;
+    margin: 10px auto;
+    font-size: 20px;
+}
+
+.separ-header-main {
     height: 100px;
     display: block;
 }
 
-.main{
+.main {
     min-height: calc(100% - 180px);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.footer{
+.footer {
     background-color: var(--agl-primary-color);
     text-align: center;
     color: var(--agl-secondary-color);
     padding: 30px 0 10px;
 }
 
-.footer a{
+.footer a {
     color: var(--agl-secondary-color);
     text-decoration: none;
     transition: all 0.5s;
 }
 
-.footer a:hover{
+.footer a:hover {
     color: var(--agl-light-grey);
 }
 
 
-.fa:before, .fab:before, .fas:before{
+.fa:before, .fab:before, .fas:before {
     font-family: 'FontAwesome';
     font-style: normal;
 }
