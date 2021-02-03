@@ -46,7 +46,10 @@
         <div class="container" id="all_figures">
             <h1>Les figures</h1>
             {% if app.user != null %}
-                <a href="{{path('add_figure')}}">Ajouter une figure <i class="fas fa-plus"></i></a>
+                <br>
+                <a href="{{path('add_figure')}}">Ajouter une figure <i class="fas fa-plus"></i></a> &nbsp;
+                <a href="{{path('add_group')}}">Ajouter un groupe de figures <i class="fas fa-plus"></i></a>
+                </br>
             {% endif %}
             {% include 'figure/list.html.twig' with {'figures' : figures} %}
         </div>
