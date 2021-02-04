@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="search_figure_page">
+   
+    <h1>Rechercher une figure</h1>
+    
+    <select class="search_figure">
+        {% for figure in allFigures %}
+            <option class="item" value="{{ path('figure_view', {'slug' : figure.slug}) }}">{{ figure.name }}</option>
+        {% endfor %}
+    </select>
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset('assets/js/figure_search.js')}}"></script>
+{% endblock %}

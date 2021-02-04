@@ -1,0 +1,7 @@
+select.search_figure {
+    margin: 20px auto;
+}
+
+select.search_figure, select.search_figure .select2-container {
+    width: 100%;
+}

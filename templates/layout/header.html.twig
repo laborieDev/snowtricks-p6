@@ -4,14 +4,33 @@
             <div class="col-md-4 logo">
                 <a href="{{ path('homepage') }}">SnowTricks</a>
             </div>
-            <div class="col-md-8 menu">
+            <div class="col-md-8 menu menu-desktop">
                 <a href="{{ path('homepage') }}"><i class="fas fa-home"></i></a>
-                <a href="#">Figures</a>
+                <a href="{{ path('homepage', {'page': 1}) }}">Figures</a>
+                <a href="{{ path('search_figure') }}"><i class="fas fa-search"></i></a>
                 {% if app.user != null %}
                     <a href="{{ path('logout') }}"><i class="fa fa-sign-out"></i></a>
                 {% else %}
                     <a href="{{ path('login') }}"><i class="fas fa-user"></i></a>
                 {% endif %}
+            </div>
+            <div class="col-md-8 menu menu-mobile">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="menu-mobile-content">
+                <a href="#" class="close-mobile-menu"><i class="fas fa-times"></i></a>
+                <div class="content">
+                    <div class="col-md-4 logo">
+                        <a href="{{ path('homepage') }}">SnowTricks</a>
+                    </div>
+                    <a href="{{ path('homepage', {'page': 1}) }}">Figures</a>
+                    <a href="{{ path('search_figure') }}"><i class="fas fa-search"></i></a>
+                    {% if app.user != null %}
+                        <a href="{{ path('logout') }}"><i class="fa fa-sign-out"></i></a>
+                    {% else %}
+                        <a href="{{ path('login') }}"><i class="fas fa-user"></i></a>
+                    {% endif %}
+                </div>
             </div>
         </div>
     </div>

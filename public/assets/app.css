@@ -12,3 +12,6 @@
 
 @import "css/pages/pages.css";
 @import "css/pages/figure_view.css";
+@import "css/pages/search.css";
+
+@import "css/responsive/mobile.css" screen and (max-width: 768px);
