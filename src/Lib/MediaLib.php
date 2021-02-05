@@ -27,13 +27,11 @@ class MediaLib
      */
     public function uploadMedia(File $file, $folder, $name = null)
     {
-        $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-
-        if($name == null){
-            $newFilename = $this->setNameForUrl($originalFilename);
-        } else {
-            $newFilename = $this->setNameForUrl($name);
+        if ($name == null) {
+            $name = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         }
+
+        $newFilename = $this->setNameForUrl($name);
 
         $newFilename = $newFilename.'-'.uniqid().'.'.$file->guessExtension();
         

@@ -10,7 +10,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 actions">
-                {% if app.user != null %}<a href="{{ path('edit_figure', {'id': figure.id}) }}"><i class="fas fa-edit"></i> Modifier</a>{% endif %}
+                {% if app.user != null %}<a href="{{ path('edit_figure', {'figureId': figure.id}) }}"><i class="fas fa-edit"></i> Modifier</a>{% endif %}
                 {% if app.user == figure.user %}<a href="#" class="remove-figure" data-id="{{ figure.id }}" data-success="{{ path('homepage') }}"><i class="fas fa-trash"></i> Effacer</a>{% endif %}
             </div>
             <div class="col-md-12 figure_medias">
