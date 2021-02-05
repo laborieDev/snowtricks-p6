@@ -1,9 +1,16 @@
+function showImage(element){
+    $("#message_modal .modal_content").html(
+        element.innerHTML
+    );
+    $("#message_modal").fadeIn();
+}
+
 jQuery(document).ready(function() {
     var thisUrl = window.location.href;
-    if(thisUrl.indexOf('?page=') != -1){
-        $('html, body').animate({
-            scrollTop: $('.add_message').offset().top
-        }, 'slow');
+    if(thisUrl.indexOf("?page=") !== -1){
+        $("html, body").animate({
+            scrollTop: $(".add_message").offset().top
+        }, "slow");
     }
 
     $("#message_modal").hide();
@@ -11,7 +18,7 @@ jQuery(document).ready(function() {
     $(".show_more_medias").removeAttr("href");
 
     $(".show_more_medias").on("click", function(){
-        if($(".figure_medias_list").css("height") == "200px"){
+        if($(".figure_medias_list").css("height") === "200px"){
             $(".show_more_medias").html("<i class=\"fas fa-chevron-up\"></i>");
             $(".figure_medias_list").css({
                 "overflow": "visible",
@@ -35,10 +42,3 @@ jQuery(document).ready(function() {
         $("#message_modal .modal_content").html("");
     });
 });
-
-function showImage(element){
-    $("#message_modal .modal_content").html(
-        element.innerHTML
-    );
-    $("#message_modal").fadeIn();
-}

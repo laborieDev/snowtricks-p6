@@ -1,11 +1,23 @@
-jQuery(document).ready(function() {
-    $(".agl_modal").fadeOut();
+function removeFigure(button){
+    $("#remove-figure-modal .modal_content").html("<div class='ajax-preloader'><div></div><div></div><div></div></div>");
+    var figureID = button.getAttribute("data-id");
+    var successAction = button.getAttribute("data-success");
 
-    $(".remove-figure").on("click", function(e){
-        e.preventDefault();
-        openDeleteReoveModal(this);
+    $.ajax({
+        url: "/connected/ajax/delete_figure/"+figureID, 
+        data: {},
+        success: function(result){
+            if(successAction !== "reload"){
+                document.location = successAction;
+            } else {
+                document.location.reload();
+            }
+        },
+        error: function(){
+            document.location.reload();
+        }
     });
-});
+}
 
 function openDeleteReoveModal(button){
     $("#remove-figure-modal .modal_content").html(
@@ -31,23 +43,11 @@ function openDeleteReoveModal(button){
     $("#remove-figure-modal").fadeIn();
 }
 
-function removeFigure(button){
-    $("#remove-figure-modal .modal_content").html("<div class='ajax-preloader'><div></div><div></div><div></div></div>");
-    var figureID = button.getAttribute('data-id');
-    var successAction = button.getAttribute('data-success');
+jQuery(document).ready(function() {
+    $(".agl_modal").fadeOut();
 
-    $.ajax({
-        url: "/connected/ajax/delete_figure/"+figureID, 
-        data: {},
-        success: function(result){
-            if(successAction != "reload"){
-                document.location = successAction;
-            } else {
-                document.location.reload();
-            }
-        },
-        error: function(){
-            console.log('Error for Remove Figure');
-        }
+    $(".remove-figure").on("click", function(e){
+        e.preventDefault();
+        openDeleteReoveModal(this);
     });
-}
+});

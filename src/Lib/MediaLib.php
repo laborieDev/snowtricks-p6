@@ -12,10 +12,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MediaLib
 {
-    private $em; 
+    private $entityManager; 
 
-    public function __construct(EntityManagerInterface $em){
-        $this->em = $em;
+    public function __construct(EntityManagerInterface $entityManager){
+        $this->entityManager = $entityManager;
     }
 
     /**
@@ -72,8 +72,8 @@ class MediaLib
             $image->setIsImage(true);
             $image->setFigure($figure);
 
-            $this->em->persist($image);
-            $this->em->flush();
+            $this->entityManager->persist($image);
+            $this->entityManager->flush();
 
             return $image;
         }
@@ -122,7 +122,7 @@ class MediaLib
             }
         }
 
-        $this->em->remove($media);
-        $this->em->flush();
+        $this->entityManager->remove($media);
+        $this->entityManager->flush();
     }
 }

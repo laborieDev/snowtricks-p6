@@ -1,81 +1,84 @@
 .header {
-    padding: 10px 0;
+  padding: 10px 0;
 }
 
 .menu-desktop {
-    display: none !important;
+  display: none !important;
 }
 
 .header .menu-mobile {
-    display: flex !important;
+  display: flex !important;
 }
 
 .header .menu-mobile-content .logo {
-    max-width: 100% !important;
+  max-width: 100% !important;
 }
 
 .separ-header-main {
-    height: 65px !important;
+  height: 65px !important;
 }
 
 #carouselHomePage .carousel-item {
-    height: calc(100vh - 60px);
+  height: calc(100vh - 60px);
 }
 
 #carouselHomePage .content div {
-    width: calc(100% - 120px);
-    margin: 0 auto;
+  width: calc(100% - 120px);
+  margin: 0 auto;
 }
 
 #carouselHomePage .content div h1 {
-    font-size: 30px;
+  font-size: 30px;
 }
 
 .figure-list-gest-links a {
-    display: block;
+  display: block;
 }
 
 .all-figures .item a .title {
-    margin-top: 0;
-    opacity: 1;
+  margin-top: 0;
+  opacity: 1;
 }
 
-.add_figure_page, .login-page, .search_figure_page {
-    width: calc(100% - 40px);
-    overflow: hidden;
+.add_figure_page, 
+.login-page, 
+.search_figure_page {
+  width: calc(100% - 40px);
+  overflow: hidden;
 }
 
-input, textarea {
-    min-width: 200px;
-    width: 100%;
+input, 
+textarea {
+  min-width: 200px;
+  width: 100%;
 }
 
 .modal_content {
-    min-width: 200px !important;
+  min-width: 200px !important;
 }
 
 .modal_content a {
-    margin: 5px auto !important;
+  margin: 5px auto !important;
 }
 
 .figure_medias_list {
-    grid-template-columns: repeat(2, 1fr) !important;
+  grid-template-columns: repeat(2, 1fr) !important;
 }
 
 .more_infos .item {
-    margin: 10px auto;
+  margin: 10px auto;
 }
 
 .add_message form {
-    display: block !important;
+  display: block !important;
 }
 
 .add_message form div {
-    min-width: 100% !important;
-    margin: 5px auto !important;
-    padding: 0 !important;
+  min-width: 100% !important;
+  margin: 5px auto !important;
+  padding: 0 !important;
 }
 
-.add_message form div button{
-    width: 100%;
+.add_message form div button {
+  width: 100%;
 }

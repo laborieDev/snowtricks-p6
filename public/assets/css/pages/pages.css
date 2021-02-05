@@ -1,16 +1,16 @@
-.page{
-    width: 100%;
+.page {
+  width: 100%;
 }
 
-.login-page, .signup-page{
-    text-align: center;
+.login-page,
+.signup-page {
+  text-align: center;
 }
 
-.add_figure_page{
-    padding: 30px 0;
+.add_figure_page {
+  padding: 30px 0;
 }
 
-.add_figure_page .required:last-child{
-    display: none;
+.add_figure_page .required:last-child {
+  display: none;
 }
-

@@ -67,7 +67,7 @@ class FigureController extends AbstractController
                     $entityManager->persist($image);
                     continue;
                 }
-                $imageMedia = $mediaLib->setImage($image, $file, $name, $folder, $figure);
+                $mediaLib->setImage($image, $file, $name, $folder, $figure);
             }
 
             $entityManager->persist($figure);
@@ -146,18 +146,18 @@ class FigureController extends AbstractController
     }
 
     /**
-     * @Route("/connected/edit_figure/{id}", name="edit_figure")
+     * @Route("/connected/edit_figure/{figureId}", name="edit_figure")
      * @param Request $request
      * @param mediaLib $mediaLib
-     * @param Int $id
+     * @param Int $figureId
      * @return Response
      */
-    public function editFigure(Request $request, MediaLib $mediaLib, $id): Response
+    public function editFigure(Request $request, MediaLib $mediaLib, $figureId): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
-        $figure = $entityManager->getRepository(Figure::class)->find($id);
-        $figureForm = $entityManager->getRepository(Figure::class)->find($id);
+        $figure = $entityManager->getRepository(Figure::class)->find($figureId);
+        $figureForm = $entityManager->getRepository(Figure::class)->find($figureId);
 
         $form = $this->createForm(FigureType::class, $figureForm);
 
@@ -216,18 +216,17 @@ class FigureController extends AbstractController
     }
 
     /**
-     * @Route("/connected/ajax/delete_figure/{id}", name="delete_figure")
-     * @param Request $request
+     * @Route("/connected/ajax/delete_figure/{figureId}", name="delete_figure")
      * @param mediaLib $mediaLib
      * @param Security $security
-     * @param Int $id
+     * @param Int $figureId
      * @return JsonResponse
      */
-    public function removeFigure(Request $request, MediaLib $mediaLib, Security $security, $id): Response
+    public function removeFigure(MediaLib $mediaLib, Security $security, $figureId): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
 
-        $figure = $entityManager->getRepository(Figure::class)->find($id);
+        $figure = $entityManager->getRepository(Figure::class)->find($figureId);
         if ($figure->getUser() != $security->getUser()) {
             throw new NotFoundHttpException('Request not authorized !');
         }
@@ -239,8 +238,8 @@ class FigureController extends AbstractController
         foreach($allMedias as $media){
             try{
                 $mediaLib->removeMedia($media);
-            } catch(Exception $e){
-                $errors += $e."; ";
+            } catch(Exception $error){
+                $errors += $error."; ";
             }
         }
 

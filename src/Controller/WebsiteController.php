@@ -51,13 +51,13 @@ class WebsiteController extends AbstractController
     {
         $entityManager = $this->getDoctrine()->getManager();
         
-        $id = $request->query->get('id');
+        $mediaId = $request->query->get('id');
 
-        if ($id == null || $security->getUser() == null) {
+        if ($mediaId == null || $security->getUser() == null) {
             throw new NotFoundHttpException('Datas not found !');
         }
 
-        $media = $entityManager->getRepository(Media::class)->find($id);
+        $media = $entityManager->getRepository(Media::class)->find($mediaId);
 
         if ($media == null) {
             throw new NotFoundHttpException('Datas not found !');

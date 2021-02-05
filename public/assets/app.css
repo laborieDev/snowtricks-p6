@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;700&display=swap');
-
-@import "css/global.css";
-@import "css/forms.css";
-
-@import "css/slider.css";
-@import "css/figures_list.css";
-@import "css/modal.css";
-@import "css/medias_carousel.css";
-@import "css/ajax-preloader.css";
-
-@import "css/pages/pages.css";
-@import "css/pages/figure_view.css";
-@import "css/pages/search.css";
-
-@import "css/responsive/mobile.css" screen and (max-width: 768px);
+/* ******** */
+@import url("css/global.css");
+@import url("css/forms.css");
+/* ******* */
+@import url("css/slider.css");
+@import url("css/figures_list.css");
+@import url("css/modal.css");
+@import url("css/medias_carousel.css");
+@import url("css/ajax-preloader.css");
+/* ******* */
+@import url("css/pages/pages.css");
+@import url("css/pages/figure_view.css");
+@import url("css/pages/search.css");
+/* ******* */
+@import url("css/responsive/mobile.css") screen and (max-width: 768px);
