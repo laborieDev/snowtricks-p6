@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.3
+-- version 4.9.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  Dim 31 jan. 2021 à 18:03
+-- Généré le :  mer. 10 fév. 2021 à 17:39
 -- Version du serveur :  5.7.26
--- Version de PHP :  7.4.2
+-- Version de PHP :  7.3.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -31,7 +31,8 @@ CREATE TABLE `app_group` (
 
 INSERT INTO `app_group` (`id`, `name`) VALUES
 (1, 'Groupe 1'),
-(2, 'Groupe 2');
+(2, 'Groupe 2'),
+(3, 'Groupe 3');
 
 -- --------------------------------------------------------
 
@@ -97,9 +98,13 @@ CREATE TABLE `figure` (
 --
 
 INSERT INTO `figure` (`id`, `name`, `description`, `slug`, `featured_image_id`, `group_id`, `user_id`, `created_at`, `updated_at`) VALUES
-(75, 'Figure 100A Edit 01 essai', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut pharetra metus. Quisque justo justo, sodales eu ultricies non, pulvinar et augue. Curabitur ut ex ex. Praesent elementum nisl ut quam tincidunt blandit vel ut justo. Sed congue sodales sapien, in faucibus nisi. Curabitur porttitor lacinia lacus, a blandit arcu tincidunt ut. Donec varius mauris vel iaculis vehicula. Proin malesuada tellus sit amet consectetur tempor. Aliquam accumsan aliquet neque non egestas. Vivamus varius dolor ac tortor varius convallis a ut neque. Integer malesuada vel sem et consequat. Essai Modification', 'Figure_100a_Edit_01_Essai', 285, 2, 1, '2021-01-23 11:09:48', '2021-01-31 17:34:59'),
-(76, 'Figure 2', 'Aliquam erat volutpat. Ut sed laoreet orci. Pellentesque fringilla lectus sed vehicula egestas. Mauris condimentum molestie placerat. Proin viverra vestibulum orci, at porta nisi. Duis convallis ut metus maximus scelerisque. Nam nunc tellus, viverra nec suscipit at, volutpat ut diam. Integer egestas non lectus vel dictum.\r\n\r\nSed vitae ultricies est. Suspendisse commodo placerat diam, suscipit dapibus massa suscipit sit amet. Quisque ullamcorper ligula et lectus efficitur molestie. Donec eu elementum orci, nec dapibus magna. Quisque non metus purus. Nunc turpis libero, cursus et malesuada id, blandit accumsan orci. Suspendisse hendrerit faucibus nibh vel tempor. Morbi sodales dui vitae porttitor hendrerit. Praesent erat metus, dignissim sed eleifend vel, euismod eu arcu.', 'Figure_2', 229, 2, 1, '2021-01-24 13:45:10', '2021-01-24 13:45:10'),
-(81, 'Essai Images 1', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel mattis ante, eget euismod lectus. In eget sagittis mauris, vitae mollis nibh. Ut ultrices, ante in faucibus vehicula, lectus nulla volutpat arcu, vel pharetra erat est ut orci. Nam vel suscipit sem. Maecenas risus ante, mollis a mi et, iaculis euismod quam. Aenean scelerisque sapien at viverra fringilla. Nam nec velit quis enim volutpat cursus. Quisque pulvinar sed ante ornare fringilla. Pellentesque vitae velit in nunc mollis auctor. Morbi eget lacus sit amet erat dignissim ultricies sed sed augue. Praesent eget dictum orci. Etiam quis erat vitae arcu finibus fringilla maximus pellentesque nunc. Aliquam erat volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\r\n\r\nPellentesque gravida felis vestibulum ex pellentesque, at blandit nisi aliquam. Duis vitae sapien lacinia, fermentum metus ut, cursus dolor. Proin sed est tristique sem rutrum semper id dignissim risus. Praesent pulvinar metus sit amet ultrices sagittis. Nunc vitae laoreet massa. Nullam rutrum, augue eget dapibus placerat, nunc nibh tempus nisi, ac rutrum libero libero consectetur orci. Quisque eget tempus lorem. Vivamus ac nisl varius, sagittis eros eget, sagittis lorem.\r\n\r\nIn cursus leo et quam laoreet bibendum. Praesent tempor semper elit, vel elementum odio consectetur id. Pellentesque gravida vitae eros ut maximus. Duis quis ante in eros varius auctor. Duis nec faucibus neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam facilisis, odio eu blandit varius, purus urna ullamcorper ipsum, ut rutrum massa ipsum eget sapien. Cras laoreet porta viverra. Sed ac metus eget orci commodo viverra vel et ante. Praesent tortor turpis, mattis quis pretium quis, cursus eget justo.', 'Essai_Images_1', 272, 1, 1, '2021-01-24 19:13:55', '2021-01-24 19:13:55');
+(75, 'Skate Skills', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ut pharetra metus. Quisque justo justo, sodales eu ultricies non, pulvinar et augue. Curabitur ut ex ex. Praesent elementum nisl ut quam tincidunt blandit vel ut justo. Sed congue sodales sapien, in faucibus nisi. Curabitur porttitor lacinia lacus, a blandit arcu tincidunt ut. Donec varius mauris vel iaculis vehicula. Proin malesuada tellus sit amet consectetur tempor. Aliquam accumsan aliquet neque non egestas. Vivamus varius dolor ac tortor varius convallis a ut neque. Integer malesuada vel sem et consequat. Essai Modification', 'Skate_Skills', 285, 2, 1, '2021-01-23 11:09:48', '2021-02-10 17:34:37'),
+(76, 'Backside Air', 'Aliquam erat volutpat. Ut sed laoreet orci. Pellentesque fringilla lectus sed vehicula egestas. Mauris condimentum molestie placerat. Proin viverra vestibulum orci, at porta nisi. Duis convallis ut metus maximus scelerisque. Nam nunc tellus, viverra nec suscipit at, volutpat ut diam. Integer egestas non lectus vel dictum.\r\n\r\nSed vitae ultricies est. Suspendisse commodo placerat diam, suscipit dapibus massa suscipit sit amet. Quisque ullamcorper ligula et lectus efficitur molestie. Donec eu elementum orci, nec dapibus magna. Quisque non metus purus. Nunc turpis libero, cursus et malesuada id, blandit accumsan orci. Suspendisse hendrerit faucibus nibh vel tempor. Morbi sodales dui vitae porttitor hendrerit. Praesent erat metus, dignissim sed eleifend vel, euismod eu arcu.', 'Backside_Air', 229, 1, 1, '2021-01-24 13:45:10', '2021-02-10 17:32:08'),
+(81, 'One Foot Tricks', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras vel mattis ante, eget euismod lectus. In eget sagittis mauris, vitae mollis nibh. Ut ultrices, ante in faucibus vehicula, lectus nulla volutpat arcu, vel pharetra erat est ut orci. Nam vel suscipit sem. Maecenas risus ante, mollis a mi et, iaculis euismod quam. Aenean scelerisque sapien at viverra fringilla. Nam nec velit quis enim volutpat cursus. Quisque pulvinar sed ante ornare fringilla. Pellentesque vitae velit in nunc mollis auctor. Morbi eget lacus sit amet erat dignissim ultricies sed sed augue. Praesent eget dictum orci. Etiam quis erat vitae arcu finibus fringilla maximus pellentesque nunc. Aliquam erat volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\r\n\r\nPellentesque gravida felis vestibulum ex pellentesque, at blandit nisi aliquam. Duis vitae sapien lacinia, fermentum metus ut, cursus dolor. Proin sed est tristique sem rutrum semper id dignissim risus. Praesent pulvinar metus sit amet ultrices sagittis. Nunc vitae laoreet massa. Nullam rutrum, augue eget dapibus placerat, nunc nibh tempus nisi, ac rutrum libero libero consectetur orci. Quisque eget tempus lorem. Vivamus ac nisl varius, sagittis eros eget, sagittis lorem.\r\n\r\nIn cursus leo et quam laoreet bibendum. Praesent tempor semper elit, vel elementum odio consectetur id. Pellentesque gravida vitae eros ut maximus. Duis quis ante in eros varius auctor. Duis nec faucibus neque. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam facilisis, odio eu blandit varius, purus urna ullamcorper ipsum, ut rutrum massa ipsum eget sapien. Cras laoreet porta viverra. Sed ac metus eget orci commodo viverra vel et ante. Praesent tortor turpis, mattis quis pretium quis, cursus eget justo.', 'One_Foot_Tricks', 272, 1, 1, '2021-01-24 19:13:55', '2021-02-10 17:32:28'),
+(82, 'Bode Merrill', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus lorem, congue ac nisi scelerisque, consequat rhoncus sapien. Sed ligula purus, sagittis sit amet lacinia tincidunt, mollis sed nunc. Mauris at augue dolor. Duis scelerisque, ligula ac tempor mattis, sem nibh maximus nibh, in rhoncus nulla quam non neque. In eros felis, pellentesque eget urna id, pellentesque ornare sem. Etiam molestie viverra laoreet. Maecenas eget turpis ut metus cursus facilisis. Sed eu arcu malesuada, faucibus lectus a, efficitur mi. Nulla egestas felis ultricies, porta nulla vel, accumsan arcu. Curabitur id ullamcorper diam.', 'Bode_Merrill', 295, 1, 3, '2021-02-04 18:27:11', '2021-02-10 17:32:41'),
+(83, 'Switch Backside', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus lorem, congue ac nisi scelerisque, consequat rhoncus sapien. Sed ligula purus, sagittis sit amet lacinia tincidunt, mollis sed nunc. Mauris at augue dolor. Duis scelerisque, ligula ac tempor mattis, sem nibh maximus nibh, in rhoncus nulla quam non neque. In eros felis, pellentesque eget urna id, pellentesque ornare sem. Etiam molestie viverra laoreet. Maecenas eget turpis ut metus cursus facilisis. Sed eu arcu malesuada, faucibus lectus a, efficitur mi. Nulla egestas felis ultricies, porta nulla vel, accumsan arcu. Curabitur id ullamcorper diam.', 'Switch_Backside', 296, 3, 3, '2021-02-04 18:27:44', '2021-02-10 17:34:22'),
+(84, 'Christian Haller', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus lorem, congue ac nisi scelerisque, consequat rhoncus sapien. Sed ligula purus, sagittis sit amet lacinia tincidunt, mollis sed nunc. Mauris at augue dolor. Duis scelerisque, ligula ac tempor mattis, sem nibh maximus nibh, in rhoncus nulla quam non neque. In eros felis, pellentesque eget urna id, pellentesque ornare sem. Etiam molestie viverra laoreet. Maecenas eget turpis ut metus cursus facilisis. Sed eu arcu malesuada, faucibus lectus a, efficitur mi. Nulla egestas felis ultricies, porta nulla vel, accumsan arcu. Curabitur id ullamcorper diam.', 'Christian_Haller', 299, 2, 3, '2021-02-04 18:28:12', '2021-02-10 17:33:35'),
+(85, 'BS 540 Seatbelt', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed metus lorem, congue ac nisi scelerisque, consequat rhoncus sapien. Sed ligula purus, sagittis sit amet lacinia tincidunt, mollis sed nunc. Mauris at augue dolor. Duis scelerisque, ligula ac tempor mattis, sem nibh maximus nibh, in rhoncus nulla quam non neque. In eros felis, pellentesque eget urna id, pellentesque ornare sem. Etiam molestie viverra laoreet. Maecenas eget turpis ut metus cursus facilisis. Sed eu arcu malesuada, faucibus lectus a, efficitur mi. Nulla egestas felis ultricies, porta nulla vel, accumsan arcu. Curabitur id ullamcorper diam.', 'Bs_540_Seatbelt', 298, 2, 3, '2021-02-04 18:28:45', '2021-02-10 17:34:04');
 
 -- --------------------------------------------------------
 
@@ -123,13 +128,13 @@ CREATE TABLE `media` (
 INSERT INTO `media` (`id`, `name`, `url`, `figure_id`, `is_image`, `img_src`) VALUES
 (226, 'Coronavirus', NULL, NULL, 1, 'uploads/images/first-600d557c4d0e4.jpeg'),
 (228, 'People 1', NULL, 75, 1, 'uploads/images/agl_company-6014261bd1e5d.png'),
-(229, 'AGL Company', '', NULL, 1, 'uploads/images/agl_company-600d79e6eb19d.jpeg'),
-(272, 'Image principal', '', NULL, 1, 'uploads/images/image_principal-600dc6f333cc6.jpeg'),
+(229, 'AGL Company', NULL, NULL, 1, 'uploads/images/agl_company-600d79e6eb19d.jpeg'),
+(272, 'Image principal', NULL, NULL, 1, 'uploads/images/image_principal-600dc6f333cc6.jpeg'),
 (273, 'Présentation Vidéo', 'https://www.youtube.com/embed/OYDDChgbDyQ', 81, 0, NULL),
-(274, 'Image 1', '', 81, 1, 'uploads/images/image_1-600dc6f33bd3d.png'),
-(275, 'Image 2', '', 81, 1, 'uploads/images/image_2-600dc6f33f334.jpeg'),
-(276, 'Image 3', '', 81, 1, 'uploads/images/image_3-600dc6f33fa20.png'),
-(277, 'Image 4', '', 81, 1, 'uploads/images/image_4-600dc6f3401ae.jpeg'),
+(274, 'Image 1', NULL, 81, 1, 'uploads/images/image_1-600dc6f33bd3d.png'),
+(275, 'Image 2', NULL, 81, 1, 'uploads/images/image_2-600dc6f33f334.jpeg'),
+(276, 'Image 3', NULL, 81, 1, 'uploads/images/image_3-600dc6f33fa20.png'),
+(277, 'Image 4', NULL, 81, 1, 'uploads/images/image_4-600dc6f3401ae.jpeg'),
 (278, 'Michel_BROLUE_profil', '', NULL, 1, 'uploads/images/michel_brolue_profil-60140c659ad78.png'),
 (279, 'People1', '', NULL, 1, 'uploads/images/john_doe_profil-600f14521193b.png'),
 (284, 'People', NULL, NULL, 1, 'uploads/images/coronavirus-6014243d9236b.jpeg'),
@@ -139,7 +144,12 @@ INSERT INTO `media` (`id`, `name`, `url`, `figure_id`, `is_image`, `img_src`) VA
 (288, 'YouTube', 'https://www.youtube.com/embed/L4bIunv8fHM?list=PLGERIDbPqtLvyPUHaqnLSkizFoQnvpTeN', 75, 0, NULL),
 (292, NULL, NULL, 75, 1, 'uploads/images/code-6016ea43eb030.png'),
 (293, NULL, NULL, 75, 1, 'uploads/images/mairie-beaulieu-6016ea43f356f.jpeg'),
-(294, NULL, NULL, 75, 1, 'uploads/images/securite-informatique-6016ea4411fcb.jpeg');
+(294, NULL, NULL, 75, 1, 'uploads/images/securite-informatique-6016ea4411fcb.jpeg'),
+(295, 'Numero 678 Img', NULL, NULL, 1, 'uploads/images/numero_678_img-601c3c7f85e52.png'),
+(296, 'assasa', NULL, NULL, 1, 'uploads/images/assasa-601c3ca0e3a12.jpeg'),
+(297, 'essai', NULL, NULL, 1, 'uploads/images/essai-601c3cbcd4f40.jpeg'),
+(298, 'regul', NULL, NULL, 1, 'uploads/images/regul-601c3cdd2eb3a.jpeg'),
+(299, 'essai', NULL, NULL, 1, 'uploads/images/essai-602418ef496b5.jpeg');
 
 -- --------------------------------------------------------
 
@@ -172,7 +182,8 @@ INSERT INTO `message` (`id`, `user_id`, `content`, `add_at`, `figure_id`) VALUES
 (10, 1, 'Aliquam erat volutpat. Ut sed laoreet orci. Pellentesque fringilla lectus sed vehicula egestas. Mauris condimentum molestie placerat. Proin viverra vestibulum orci, at porta nisi. Duis convallis ut metus maximus scelerisque. Nam nunc tellus, viverra nec suscipit at, volutpat ut diam. Integer egestas non lectus vel dictum.\r\n\r\nSed vitae ultricies est. Suspendisse commodo placerat diam, suscipit dapibus massa suscipit sit amet. Quisque ullamcorper ligula et lectus efficitur molestie. Donec eu elementum orci, nec dapibus magna. Quisque non metus purus. Nunc turpis libero, cursus et malesuada id, blandit accumsan orci. Suspendisse hendrerit faucibus nibh vel tempor. Morbi sodales dui vitae porttitor hendrerit. Praesent erat metus, dignissim sed eleifend vel, euismod eu arcu.', '2021-01-24', 76),
 (11, 1, 'Lorem', '2021-01-24', 75),
 (13, 1, 'Essai espace commentaire', '2021-01-24', 76),
-(17, 3, 'Hello World', '2021-01-29', 75);
+(17, 3, 'Hello World', '2021-01-29', 75),
+(18, 3, 'Essai 234', '2021-02-04', 75);
 
 -- --------------------------------------------------------
 
@@ -197,7 +208,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `last_name`, `first_name`, `email`, `password`, `roles`, `image_id`) VALUES
 (1, 'LABORIE', 'ANTHONY', 'acs.agl46@gmail.com', '$2y$13$XbWiCeaKqxj9ZaRgSB33QeMFMH0Cr1QeI9epGV.uOeCh9h4jpxaBS', '[\"ROLE_USER\"]', 279),
 (2, 'LABORIE', 'ANTHONY', 'acs.agl@gmail.com', '$argon2id$v=19$m=65536,t=4,p=1$nyDkHkIuOCWXdEra84Ab+A$Fh2XTlXjy1rKTkFeyc8WWN7LN1Jc7NtRNSzgVFySsXs', '[\"ROLE_USER\"]', 279),
-(3, 'Michel', 'BROLUE', 'admin@me.fr', '$2y$13$9bHyLla4UtME.LYYzy8aYuANjdSWDMGg9A5mKIO.BVV5m1QjXnxLi', '[\"ROLE_USER\"]', 278);
+(3, 'Michel', 'BROLUE', 'admin@me.fr', '$argon2id$v=19$m=65536,t=4,p=1$l7iV2o5sxahFhwCHDFutIg$mK9ssx4mFzejMdvtTjZtsmr+bdIBsw9CteKkGV2sNP0', '[\"ROLE_USER\"]', 278);
 
 --
 -- Index pour les tables déchargées
@@ -256,25 +267,25 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT pour la table `app_group`
 --
 ALTER TABLE `app_group`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT pour la table `figure`
 --
 ALTER TABLE `figure`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=87;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT pour la table `media`
 --
 ALTER TABLE `media`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=297;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=300;
 
 --
 -- AUTO_INCREMENT pour la table `message`
 --
 ALTER TABLE `message`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT pour la table `user`
