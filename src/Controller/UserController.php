@@ -18,6 +18,7 @@ class UserController extends AbstractController
      * @Route("/signup", name="signup")
      * 
      * @param Request $request
+     * @param MediaLIb $mediaLib
      * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */

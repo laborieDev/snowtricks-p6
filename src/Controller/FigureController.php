@@ -243,6 +243,11 @@ class FigureController extends AbstractController
             }
         }
 
+        $allComments = $figure->getMessages();
+        foreach($allComments as $comment){
+            $entityManager->remove($comment);
+        }
+
         $entityManager->remove($figure);
         $entityManager->flush();
 
