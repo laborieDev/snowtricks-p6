@@ -55,7 +55,15 @@
             <div class="col-md-12 all_messages">
                 {% for message in messages %}
                     <div class="item">
-                        <div class="image" {% if message.user.image != null and message.user.image.imgSrc != null %}style="background-image:url('/{{ message.user.image.imgSrc }}')"{% endif %}>
+                        {% set userUrl = "" %}
+                        {% if message.user.image != null %}
+                            {% if message.user.image.imgSrc != null %}
+                                {% set userUrl = "/" ~ message.user.image.imgSrc %}
+                            {% else %}
+                                {% set userUrl = message.user.image.url %}
+                            {% endif %}
+                        {% endif %}
+                        <div class="image" style="background-image:url('{{ userUrl }}')">
                         </div>
                         <div class="infos">
                             <p class="author_name">{{ message.user.lastName }} {{ message.user.firstName }} - {{ message. addAt|date("d/m/Y") }}</p>
