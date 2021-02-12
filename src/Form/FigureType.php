@@ -42,7 +42,7 @@ class FigureType extends AbstractType
             ])
 
             ->add('featuredImage', MediaType::class,[
-                "label" => "Image mise en avant"
+                "label" => "Image mise en avant",
             ])
 
             ->add('images', CollectionType::class, [

@@ -48,11 +48,6 @@ class Figure
     private $group;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Media", inversedBy="principalFigure", cascade={"persist"})
-     */
-    private $featuredImage;
-
-    /**
      * @ORM\OneToMany(targetEntity="App\Entity\Media", mappedBy="figure", cascade={"persist"})
      */
     private $images;
@@ -76,6 +71,12 @@ class Figure
      * @ORM\Column(type="datetime", nullable=true) 
      */
     private $updatedAt;
+
+    /**
+     * Featured Image
+     * @var Media
+     */
+    private $featuredImage;
 
     public function __construct()
     {
@@ -149,19 +150,25 @@ class Figure
     }
 
     /**
-     * @return Media
+     * Get featured Image of Figure
+     * @return Media|null
      */
-    public function getFeaturedImage(): ?Media
+    public function getFeaturedImage()
     {
-        return $this->featuredImage;
+        foreach($this->images as $image){
+            if($image->getIsFeaturedImage() == true){
+                return $image;
+            }
+        }
     }
 
     /**
-     * @param Media featuredImage
+     * Get featured Image of Figure
+     * @return Media|null
      */
-    public function setFeaturedImage(?Media $featuredImage): self
+    public function setFeaturedImage(Media $image)
     {
-        $this->featuredImage = $featuredImage;
+        $this->featuredImage = $image;
 
         return $this;
     }

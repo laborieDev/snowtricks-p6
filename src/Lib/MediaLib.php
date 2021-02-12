@@ -59,17 +59,19 @@ class MediaLib
      * @param Figure figure
      * @return Media image
      */
-    public function setImage(Media $image, File $file, $name, $folder, $figure = null)
+    public function setImage(Media $image, File $file, $name, $folder, $figure = null, $isFeatured = false)
     {
         $upload = $this->uploadMedia($file, $folder, $name);
 
+        //If image upload is OK
         if($upload['is_upload']){
             $fileName = $upload['data'];
             $image->setName($name);
             $image->setImgSrc($folder."/".$fileName);
+            $image->setIsFeaturedImage($isFeatured);
             $image->setIsImage(true);
             $image->setFigure($figure);
-
+            
             $this->entityManager->persist($image);
             $this->entityManager->flush();
 
@@ -86,10 +88,10 @@ class MediaLib
      * @param String folder Server Folder Name
      * @return Media image
      */
-    public function addImage(File $file, $name, $folder, $figure = null)
+    public function addImage(File $file, $name, $folder, $figure = null, $isFeatured = false)
     {
         $image = new Media();
-        $image = $this->setImage($image, $file, $name, $folder, $figure);
+        $image = $this->setImage($image, $file, $name, $folder, $figure, $isFeatured);
 
         return $image;
     }

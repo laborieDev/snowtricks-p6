@@ -1,3 +1,6 @@
+/**
+ * Remove Others images on form
+ */
 function removeActualImage(button){
     $("#message_modal .modal_content").html("<div class='ajax-preloader'><div></div><div></div><div></div></div>");
     $("#message_modal").fadeIn();
@@ -19,6 +22,9 @@ function removeActualImage(button){
     });
 }
 
+/**
+ * Add delete button
+ */
 function addTagFormDeleteLink($tagFormLi) {
     var $removeFormButton = $("<button type='button' class='btn-primary btn-delete'><i class='fas fa-trash'></i></button>");
     $tagFormLi.append($removeFormButton);
@@ -29,6 +35,9 @@ function addTagFormDeleteLink($tagFormLi) {
     });
 }
 
+/**
+ * Add collection of others images on form
+ */
 function addFormToCollection($collectionHolderClass) {
     // Get the ul that holds the collection of tags
     var $collectionHolder = $("." + $collectionHolderClass);
@@ -64,17 +73,15 @@ function addFormToCollection($collectionHolderClass) {
     addTagFormDeleteLink($newFormLi);
 }
 
+/**
+ * Hide input text for url (Featured Image)
+ */
 function setRequiredInputMedia(){
     $("label[for='figure_featuredImage_url']").hide();
     $("#figure_featuredImage_url").hide();
 
     if($("#action-label").val() !== "edit"){
         $("#figure_featuredImage_image").attr("required", "true");
-    }
-    else {
-        // $("gest-figure-submit-form").on("click", function(e){
-        //     e.preventDefault();
-        // });
     }
 }
 

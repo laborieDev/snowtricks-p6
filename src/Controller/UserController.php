@@ -18,6 +18,7 @@ class UserController extends AbstractController
      * @Route("/signup", name="signup")
      * 
      * @param Request $request
+     * @param MediaLIb $mediaLib
      * @param UserPasswordEncoderInterface $encoder
      * @return Response
      */
@@ -29,12 +30,14 @@ class UserController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
+            //Set password
             $password = $user->getPassword();
             $encoded = $encoder->encodePassword($user, $password);
             $user->setPassword($encoded);
 
             $user->setRoles(['ROLE_USER']);
 
+            //Get images directory
             $folder = $this->getParameter('images_directory');
 
             // Get featured image

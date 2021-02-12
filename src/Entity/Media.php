@@ -35,15 +35,15 @@ class Media
      */
     private $imgSrc;
 
-     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Figure", mappedBy="featuredImage")
-     */
-    private $principalFigure;
-
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Figure", inversedBy="images", cascade={"persist"})
      */
     private $figure;
+
+    /**
+    * @ORM\Column(type="boolean", nullable=true)
+    */
+    private $isFeaturedImage;
 
     /**
      * @ORM\OneToMany(targetEntity=User::class, mappedBy="image")
@@ -104,44 +104,6 @@ class Media
     public function setUrl(string $url = null): self
     {
         $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|Figure[]
-     */
-    public function getPrincipalFigures(): Collection
-    {
-        return $this->principalFigures;
-    }
-
-    /**
-     * @param Figure principalFigure
-     * @return Media
-     */
-    public function addPrincipalFigure(Figure $principalFigure): self
-    {
-        if (!$this->principalFigures->contains($principalFigure)) {
-            $this->principalFigures[] = $principalFigure;
-            $principalFigure->setFetauredImage($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @param Figure principalFigure
-     * @return Media
-     */
-    public function removePrincipalFigure(Figure $principalFigure): self
-    {
-        if ($this->principalFigures->removeElement($principalFigure)) {
-            // set the owning side to null (unless already changed)
-            if ($principalFigure->getFetauredImage() === $this) {
-                $principalFigure->setFetauredImage(null);
-            }
-        }
 
         return $this;
     }
@@ -285,6 +247,18 @@ class Media
     public function setImgSrc(?string $imgSrc = null): self
     {
         $this->imgSrc = $imgSrc;
+
+        return $this;
+    }
+
+    public function getIsFeaturedImage(): ?bool
+    {
+        return $this->isFeaturedImage;
+    }
+
+    public function setIsFeaturedImage(bool $isFeaturedImage): self
+    {
+        $this->isFeaturedImage = $isFeaturedImage;
 
         return $this;
     }

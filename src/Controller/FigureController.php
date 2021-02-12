@@ -49,13 +49,10 @@ class FigureController extends AbstractController
 
             if ($featuredImage) {
                 $name = $featuredImageObject->get('name')->getData();
-
-                $featuredImageMedia = $mediaLib->addImage($featuredImage, $name, $folder);
-                if($featuredImageMedia != null){
-                    $figure->setFeaturedImage($featuredImageMedia);
-                }
+                $featuredImageMedia = $mediaLib->addImage($featuredImage, $name, $folder, $figure, true);
             }
 
+            //Get others images
             $images = $form->get('images')->getData();
 
             foreach($images as $image){
@@ -119,10 +116,13 @@ class FigureController extends AbstractController
             $isFormSubmit = true;
         }
 
+        //Get all comments
         $allMessages = $entityManager->getRepository(Message::class)->findBy(['figure' => $figure], [
             'id' => 'desc'
         ]);
 
+
+        //Paginate comments
         $messages = $paginator->paginate(
             $allMessages,
             $request->query->getInt('page', 1),
@@ -181,12 +181,15 @@ class FigureController extends AbstractController
             if ($featuredImage != null) {
                 $name = $featuredImageObject->get('name')->getData();
 
-                $featuredImageMedia = $mediaLib->addImage($featuredImage, $name, $folder);
+                $oldFetauredImage = $figure->getFeaturedImage();
+
+                $featuredImageMedia = $mediaLib->addImage($featuredImage, $name, $folder, $figure, true);
                 if($featuredImageMedia != null){
-                    $figure->setFeaturedImage($featuredImageMedia);
+                    $mediaLib->removeMedia($oldFetauredImage);
                 }
             }
 
+            //Get others images
             $images = $form->get('images')->getData();
 
             foreach($images as $image){
@@ -227,6 +230,7 @@ class FigureController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
 
         $figure = $entityManager->getRepository(Figure::class)->find($figureId);
+
         if ($figure->getUser() != $security->getUser()) {
             throw new NotFoundHttpException('Request not authorized !');
         }
@@ -243,15 +247,13 @@ class FigureController extends AbstractController
             }
         }
 
+        $allComments = $figure->getMessages();
+        foreach($allComments as $comment){
+            $entityManager->remove($comment);
+        }
+
         $entityManager->remove($figure);
         $entityManager->flush();
-
-        //SUPPRESSION DE L'IMAGE PRINCIPALE
-        try{
-            $mediaLib->removeMedia($figure->getFeaturedImage());
-        } catch(Exception $e){
-            $errors = $e."; ";
-        }
 
         return new JsonResponse([
             'error' => $errors

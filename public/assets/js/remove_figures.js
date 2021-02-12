@@ -1,7 +1,12 @@
+/**
+ * Call ajax for remove figure
+ */
 function removeFigure(button){
     $("#remove-figure-modal .modal_content").html("<div class='ajax-preloader'><div></div><div></div><div></div></div>");
     var figureID = button.getAttribute("data-id");
     var successAction = button.getAttribute("data-success");
+
+    console.log(figureID);
 
     $.ajax({
         url: "/connected/ajax/delete_figure/"+figureID, 
@@ -19,6 +24,9 @@ function removeFigure(button){
     });
 }
 
+/**
+ * Open modal for confirm delete Action
+ */
 function openDeleteReoveModal(button){
     $("#remove-figure-modal .modal_content").html(
         "<div>"+
